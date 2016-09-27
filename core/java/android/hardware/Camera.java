@@ -2152,7 +2152,6 @@ public class Camera {
     }
     private native final void native_setLongshot(boolean enable);
 
-<<<<<<< HEAD
     /** @hide
      * Stop longshot. Available only in ZSL.
      */
@@ -2162,8 +2161,6 @@ public class Camera {
     }
     private native final void native_stopLongshot();
 
-=======
->>>>>>> 17e7e77... Camera: Add feature extensions
      /** @hide
      * Handles the Touch Co-ordinate.
      */

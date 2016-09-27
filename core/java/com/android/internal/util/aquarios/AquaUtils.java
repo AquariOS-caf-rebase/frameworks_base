@@ -1,4 +1,3 @@
-
 /*
  * Copyright (C) 2017 The Android Open Source Project
  *
@@ -35,6 +34,7 @@ import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.os.UserHandle;
 import android.view.IWindowManager;
 import android.view.WindowManagerGlobal;
 import android.view.InputDevice;
@@ -385,5 +385,5 @@ public class AquaUtils {
         }
 
         return false;
+      }
     }
-}
