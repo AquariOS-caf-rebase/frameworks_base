@@ -73,19 +73,6 @@ public class AquaUtils {
         }
     }
 
-
-/**
- * Screen recording
- */
-    public static void takeScreenrecord(int mode) {
-        IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
-        try {
-            wm.screenRecordAction(mode);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
-
 /**
  * Omni's Pacxkage Utils
  */
