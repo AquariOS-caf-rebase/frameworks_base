@@ -6186,9 +6186,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.LAST_DOZE_AUTO_BRIGHTNESS),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -6252,9 +6249,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         @Override
         public void onChange(boolean selfChange, Uri uri) {
             if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.LAST_DOZE_AUTO_BRIGHTNESS))) {
-                updateDozeBrightness();
-            } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN))) {
                 setStatusBarWindowViewOptions();
             } else if (uri.equals(Settings.System.getUriFor(
@@ -6307,7 +6301,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
 
         public void update() {
-            updateDozeBrightness();
             setStatusBarWindowViewOptions();
             setLockscreenMediaMetadata();
             setQsPanelOptions();
@@ -6332,15 +6325,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         if (mQuickStatusBarHeader != null) {
             mQuickStatusBarHeader.updateBatterySettings();
         }
-    }
-
-    private void updateDozeBrightness() {
-        int defaultDozeBrightness = mContext.getResources().getInteger(
-                com.android.internal.R.integer.config_screenBrightnessDoze);
-        int lastValue = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.LAST_DOZE_AUTO_BRIGHTNESS, defaultDozeBrightness,
-                UserHandle.USER_CURRENT);
-        mStatusBarWindowManager.updateDozeBrightness(lastValue);
     }
 
     private void setStatusBarWindowViewOptions() {
